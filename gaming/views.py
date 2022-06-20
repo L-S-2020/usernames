@@ -29,7 +29,7 @@ def profile(request, name):
     """
     me = User.objects.get(username=name)
     names = usernames.objects.filter(author=me)
-    return render(request, 'gaming/profil.html', {'name': name, 'games': names})
+    return render(request, 'gaming/profile.html', {'name': name, 'games': names})
 
 def edit_profile(request):
     """
@@ -39,8 +39,12 @@ def edit_profile(request):
     :return: The user is being returned.
     """
     me = request.user
-    names = usernames.objects.filter(author=me)
-    return render(request, 'gaming/edit_profile.html', {'name': me, 'games': names})
+    if request.user.is_authenticated:
+        names = usernames.objects.filter(author=me)
+    else:
+        return redirect('login_request')
+    return render(request, 'gaming/edit.html', {'name': me, 'games': names})
+
 
 def add(request):
     if request.method == "POST":
@@ -54,10 +58,12 @@ def add(request):
         form = addForm()
     return render(request, 'gaming/add.html', {'form': form})
 
+
 def delete(request, game):
     me = request.user
-    usernames.objects.filter(author=me, game = game).delete()
+    usernames.objects.filter(author=me, game=game).delete()
     return redirect('edit_profile')
+
 
 def signup(request):
     if request.method == 'POST':

@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" style="background: #000000;">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>usernames</title>
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Navbar-Right-Links-Dark.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+</head>
+
+<body style="color: rgb(255,255,255);background: rgb(0,0,0);">
+    <h1 style="color: rgb(255,255,255);">Gamer-Profile of {{ name }}</h1>
+    <div class="row">
+        <div class="col">
+            <h1>Usernames</h1>
+        </div>
+        <div class="col">
+    </div>
+    {% for game in games %}
+        <div class="card" style="background: rgb(0,0,0);border-width: 5px;border-color: rgb(62,140,228);border-radius: 9px;">
+            <div class="card-header" style="border-bottom-color: var(--bs-blue);">
+               <div class="row">
+                    <div class="col">
+                        <h5 class="mb-0">{{ game.game }}</h5>
+                    </div>
+                   <div class="col">
+                  </div>
+              </div>
+            </div>
+           <div class="card-body">
+              <p class="card-text">{{ game.username }}</p>
+           </div>
+         </div>
+    {% endfor %}
+    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+
+</html>
