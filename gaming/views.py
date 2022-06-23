@@ -2,7 +2,7 @@
 # functions from the django.contrib.auth, django.contrib.auth.forms, django.shortcuts, .models,
 # django.contrib.auth.models, .forms, and django.contrib modules.
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
@@ -41,9 +41,11 @@ def edit_profile(request):
     me = request.user
     if request.user.is_authenticated:
         names = usernames.objects.filter(author=me)
+        name = str(me)
+        url = request.build_absolute_uri('/profile/' + name)
     else:
         return redirect('login_request')
-    return render(request, 'gaming/edit.html', {'name': me, 'games': names})
+    return render(request, 'gaming/edit.html', {'name': me, 'games': names, 'url': url})
 
 
 def add(request):
@@ -104,3 +106,7 @@ def login_request(request):
             messages.error(request, "Invalid username or password.")
     form = AuthenticationForm()
     return render(request=request, template_name="gaming/login.html", context={"login_form": form})
+
+def logout_request(request):
+    logout(request)
+    return redirect(login_request)
