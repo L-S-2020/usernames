@@ -110,3 +110,6 @@ def login_request(request):
 def logout_request(request):
     logout(request)
     return redirect(login_request)
+
+def home(request):
+    return render(request=request, template_name="gaming/main.html")

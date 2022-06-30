@@ -9,5 +9,6 @@ urlpatterns = [
     path('add', views.add, name='add'),
     path('edit', views.edit_profile, name='edit_profile'),
     path('delete/<str:game>', views.delete, name='delete'),
-    path('logout', views.logout_request, name='logout_request')
+    path('logout', views.logout_request, name='logout_request'),
+    path('', views.home, name='home')
 ]
