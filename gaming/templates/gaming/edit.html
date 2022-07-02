@@ -12,7 +12,15 @@
 </head>
 {% block content %}
 <body style="color: rgb(255,255,255);background: rgb(0,0,0);">
-    <h1 style="color: rgb(255,255,255);">Gamer-Profile of {{ name }}</h1>
+    <div class="row">
+        <div class="col">
+            <h1 style="color: rgb(255,255,255);">Gamer-Profile of {{ name }}</h1>
+        </div>
+        <div class="col">
+            <p>Link:</p>
+            <p>{{ url }}</p>
+        </div>
+    </div>
     <div class="row">
         <div class="col">
             <h1>Usernames</h1>

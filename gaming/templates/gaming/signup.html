@@ -1,18 +1,30 @@
-
-
-{% block content %} 
-
+{% extends "gaming/header.html" %}
 {% load crispy_forms_tags %}         
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
 
-<!--Register--> 
-<div class="container py-5">
-	<h1>Register</h1>
-	<form method="POST">
-		{% csrf_token %}
-		{{ register_form|crispy }}                    
-		<button class="btn btn-primary" type="submit">Create Account</button>
-	</form>
-	<p class="text-center">Already registered? <a href="/login">login</a> instead.</p>
-</div>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>usernames</title>
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Navbar-Right-Links-Dark.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+</head>
+{% block content %}
+<body style="background: var(--bs-dark);color: var(--bs-white);">
+	<div class="container py-5">
+		<h1>Register</h1>
+		<form method="POST">
+			{% csrf_token %}
+			{{ register_form|crispy }}                    
+			<button class="btn btn-primary" type="submit">Create Account</button>
+			<p class="text-center">Already registered? <a href="/login">login</a> instead.</p>
+		</form>
+	</div>
+    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+{% endblock %}
+</html>
 
-{% endblock %}ock %}
