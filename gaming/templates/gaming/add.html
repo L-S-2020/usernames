@@ -1,7 +1,9 @@
+{% extends "gaming/header.html" %}
+{% load static %}
 {% block content %}
-    <h2>add username</h2>
+    <h1>add username</h1>
     <form method="POST" class="post-form">{% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="save btn btn-secondary">Save</button>
+        <button type="submit" class="btn btn-primary">Save</button>
     </form>
 {% endblock %}

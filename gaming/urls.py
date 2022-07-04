@@ -1,6 +1,7 @@
 from django.urls import path, include
 from . import views
 
+# Defining the url patterns for the gaming app.
 urlpatterns = [
     path('profile/<str:name>/', views.profile, name='profile'),
     path('signup/', views.signup, name='signup'),

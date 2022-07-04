@@ -1,6 +1,5 @@
-# Importing the authenticate, login, AuthenticationForm, render, redirect, usernames, User, SignUpForm, and messages
-# functions from the django.contrib.auth, django.contrib.auth.forms, django.shortcuts, .models,
-# django.contrib.auth.models, .forms, and django.contrib modules.
+# Importing the messages, authenticate, login, logout, AuthenticationForm, User, render, redirect,
+# SignUpForm, addForm, and usernames.
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
@@ -11,33 +10,17 @@ from .forms import SignUpForm
 from .forms import addForm
 from .models import usernames
 
-
-# https://ordinarycoders.com/blog/article/django-user-register-login-logout
-# https://www.tabnine.com/
-# https://www.jetbrains.com/de-de/pycharm/
-# https://plugins.jetbrains.com/plugin/18606-mintlify-doc-writer
-
 # Create your views here.
 def profile(request, name):
-    """
-    It takes a request and a name, gets the user with that name, gets all the games that user has added, and then renders
-    the profile page with the name and games.
-
-    :param request: The request is an HttpRequest object. It contains metadata about the request
-    :param name: The name of the user whose profile you want to view
-    :return: The profile page is being returned.
-    """
+    # This is the view for the profile page. It is getting the user, getting all the games that user
+    # has added, and then rendering the profile page with the name and games.
     me = User.objects.get(username=name)
     names = usernames.objects.filter(author=me)
     return render(request, 'gaming/profile.html', {'name': name, 'games': names})
 
 def edit_profile(request):
-    """
-    It takes the request, gets the user, and then gets all the games that the user has added to their profile
-
-    :param request: The request is an HttpRequest object
-    :return: The user is being returned.
-    """
+    # Getting the user, getting all the games that user has added, and then rendering the profile page
+    # with the name and games, if the user is not logged in, it redirects the user to the login page.
     me = request.user
     if request.user.is_authenticated:
         names = usernames.objects.filter(author=me)
@@ -49,6 +32,11 @@ def edit_profile(request):
 
 
 def add(request):
+    # This is the view for the add page. It is checking if the request method is POST, if it is, it is
+    # getting the form,
+    # checking if the form is valid, and if it is, it is saving the form, setting the author to the
+    # user, and saving the form.
+    # If the form is not valid, it is rendering the add page with the form.
     if request.method == "POST":
         form = addForm(request.POST)
         if form.is_valid():
@@ -62,12 +50,17 @@ def add(request):
 
 
 def delete(request, game):
+    # This is the view for the delete page. It is getting the user, and then deleting the game that
+    # the user has added.
     me = request.user
     usernames.objects.filter(author=me, game=game).delete()
     return redirect('edit_profile')
 
 
 def signup(request):
+    # Checking if the request method is POST, if it is, it is getting the form, checking if the form
+    # is valid, and if it is, it is saving the form (creating the user account), setting the current user to the new created account, and saving the
+    # form. If the form is not valid, it is rendering the add page with the form.
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
@@ -81,15 +74,11 @@ def signup(request):
 
 
 def login_request(request):
-    """
-    If the request method is POST, then validate the form, and if the form is valid, authenticate the user, and if the user
-    is authenticated, log the user in, and if the user is logged in, redirect the user to the homepage, and if the user is
-    not logged in, display an error message
-
-    :param request: The request object is passed to the view by Django. It contains all the information about the current
-    request
-    :return: The login.html page is being returned.
-    """
+    # This is the view for the login page. It is checking if the request method is POST, if it is, it
+    # is getting the form, checking if the form is valid, and if it is, it is getting the username and
+    # password from the form, authenticating the user, and if the user is not none, it is logging the
+    # user in, and redirecting the user to the edit profile page. If the form is not valid, it is
+    # rendering the login page with the form.
     if request.method == "POST":
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
@@ -108,8 +97,10 @@ def login_request(request):
     return render(request=request, template_name="gaming/login.html", context={"login_form": form})
 
 def logout_request(request):
+    # Logging the user out and redirecting the user to the login page.
     logout(request)
     return redirect(login_request)
 
 def home(request):
+    # Rendering the main page.
     return render(request=request, template_name="gaming/main.html")
