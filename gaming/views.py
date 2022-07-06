@@ -104,3 +104,4 @@ def logout_request(request):
 def home(request):
     # Rendering the main page.
     return render(request=request, template_name="gaming/main.html")
+
