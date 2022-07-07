@@ -105,3 +105,10 @@ def home(request):
     # Rendering the main page.
     return render(request=request, template_name="gaming/main.html")
 
+def page_not_found_view(request, exception):
+    # Rendering the error page with the status 404.
+    return render(request=request, template_name='gaming/error.html', status=404)
+
+def r(request):
+    # Rickroll somebody.
+    return render(request=request, template_name='gaming/fun.html')

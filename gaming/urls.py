@@ -13,5 +13,6 @@ urlpatterns = [
     path('edit', views.edit_profile, name='edit_profile'),
     path('delete/<str:game>', views.delete, name='delete'),
     path('logout', views.logout_request, name='logout_request'),
+    path('fun', views.r, name='r'),
     path('', views.home, name='home')
 ]
