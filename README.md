@@ -22,5 +22,7 @@ python manage.py runserver
 4. Die Webseite ist nun unter `http://127.0.0.1:8000/` verfügbar.
 
 5. Die Django integrierte Admin Seite ist unter `http://127.0.0.1:8000/admin` verfügbar, die Zugangsdaten sind:
+
 Username: l
+
 Password: gJ75dkQXwanYux#cCQ
