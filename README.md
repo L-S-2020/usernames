@@ -26,3 +26,12 @@ python manage.py runserver
 Username: l
 
 Password: gJ75dkQXwanYux#cCQ
+
+
+
+
+/* Copyright (C) Leonard Stegle - All Rights Reserved
+ * Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ * Written by Leonard Stegle, July 2022
+ */
