@@ -4,14 +4,14 @@
 **Made by Leonard Stegle using Django and Bootstrap CSS**
 
 ### How to run
-1. Lade die Reponsitorie herunter
+1. Lade die Reponsitorie herunter (git muss instaliert sein (https://git-scm.com/download/))
 ```bash
 git clone https://github.com/L-S-2020/IMP_Projekt_2022/
 ```
 ```bash
 cd IMP_Projekt_2022
 ```
-2. Installiere die benötigten Python Pakete (Python muss installiert sein)
+2. Installiere die benötigten Python Pakete (Python muss installiert sein (https://www.python.org/downloads/))
 ```bash
 pip install -r requirements.txt
 ```
