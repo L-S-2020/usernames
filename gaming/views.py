@@ -68,10 +68,13 @@ def signup(request):
             login(request, user)
             messages.success(request, "User Account successfully created!")
             return redirect('edit_profile')
+        else:
+            for msg in form.error_messages:
+                messages.error(request, f"{msg}: {form.error_messages[msg]}")
+                print(msg)
         messages.error(request, "Error: User Account could not be created!")
     form = SignUpForm()
     return render(request=request, template_name='gaming/signup.html', context={"register_form": form})
-
 
 def login_request(request):
     # This is the view for the login page. It is checking if the request method is POST, if it is, it
