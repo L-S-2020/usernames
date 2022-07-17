@@ -43,6 +43,7 @@ def add(request):
             post = form.save(commit=False)
             post.author = request.user
             post.save()
+            messages.success(request, "Username successfully added!")
             return redirect('edit_profile')
     else:
         form = addForm()
@@ -54,6 +55,7 @@ def delete(request, game):
     # the user has added.
     me = request.user
     usernames.objects.filter(author=me, game=game).delete()
+    messages.success(request, "Username successfully deleted!")
     return redirect('edit_profile')
 
 
@@ -72,7 +74,6 @@ def signup(request):
             for msg in form.error_messages:
                 messages.error(request, f"{msg}: {form.error_messages[msg]}")
                 print(msg)
-        messages.error(request, "Error: User Account could not be created!")
     form = SignUpForm()
     return render(request=request, template_name='gaming/signup.html', context={"register_form": form})
 
@@ -102,6 +103,7 @@ def login_request(request):
 def logout_request(request):
     # Logging the user out and redirecting the user to the login page.
     logout(request)
+    messages.success(request, "Successfully logged out!")
     return redirect(login_request)
 
 def home(request):
