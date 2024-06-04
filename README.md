@@ -13,7 +13,7 @@ The profile can then be shared over a personal link.
   
 1. Clone the repository:  
       
-  ```git clone https://github.com/username/usernames.git```  
+  ```git clone https://github.com/L-S-2020/usernames.git```  
    
 2. Navigate to the project directory:  
 
