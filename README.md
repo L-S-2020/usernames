@@ -1,37 +1,53 @@
-# IMP Programmierprojekt 2022
-[![BCH compliance](https://bettercodehub.com/edge/badge/L-S-2020/IMP_Projekt_2022?branch=master&token=0b4625151cb13ce475dfb5164c70c74cc9067cb0)](https://bettercodehub.com/)
+# Usernames
 
-**Made by Leonard Stegle using Django and Bootstrap CSS**
+This is a Django-based web application that allows users to create personal profiles to show their usernames in different games/applications. The application is built with Python and Django, and uses HTML and CSS for the frontend.
+The profile can then be shared over a personal link.
 
-### How to run
-1. Lade die Reponsitorie herunter (git muss instaliert sein (https://git-scm.com/download/))
-```bash
-git clone https://github.com/L-S-2020/IMP_Projekt_2022/
-```
-```bash
-cd IMP_Projekt_2022
-```
-2. Installiere die benötigten Python Pakete (Python muss installiert sein (https://www.python.org/downloads/))
-```bash
-pip install -r requirements.txt
-```
-3. Starte den Django integrierten Server
-```bash
-python manage.py runserver
-```
-4. Die Webseite ist nun unter `http://127.0.0.1:8000/` verfügbar.
+## Features
 
-5. Die Django integrierte Admin Seite ist unter `http://127.0.0.1:8000/admin` verfügbar, die Zugangsdaten sind:
+- User Authentication: Users can sign up, log in, and log out.
+- Profile Management: Users can create, edit, and delete their profiles.
+- Game Management: Users can add and delete games from their profiles.
 
-Username: l
+## Installation
 
-Password: gJ75dkQXwanYux#cCQ
+1. Clone the repository:
+    ```
+    git clone https://github.com/username/usernames.git
+    ```
+2. Navigate to the project directory:
+    ```
+    cd usernames
+    ```
+3. Install the required dependencies:
+    ```
+    pip install -r requirements.txt
+    ```
+4. Run the Django migrations:
+    ```
+    python manage.py migrate
+    ```
+5. Create a superuser (to use the Django admin module):
+    ```
+    python manage.py createsuperuser
+    ```
+6. Start the Django server:
+    ```
+    python manage.py runserver
+    ```
+Now, you can navigate to `http://localhost:8000` in your web browser to view the application.
 
+## Usage
 
+- To create a new profile, navigate to the signup page and fill out the form.
+- To log in, navigate to the login page and enter your credentials.
+- Once logged in, you can add usernames to your profile, edit your profile, or delete usernames from your profile.
+- To log out, click the logout button.
 
+## Contributing
 
-/* Copyright (C) Leonard Stegle - All Rights Reserved
- * Unauthorized copying of this file, via any medium is strictly prohibited
- * Proprietary and confidential
- * Written by Leonard Stegle, July 2022
- */
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+
+This project is licensed under the MIT License.
